@@ -1,25 +1,34 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { nutDetail, supDetail, supList } from "../../api";
 
 export const Home = () => {
+  const [supListData, setSupListData] = useState();
+  const [supDetailData, setSupDetailData] = useState();
+  const [nutData, setNutData] = useState();
+
   useEffect(() => {
     (async () => {
       const {
         body: { items: supListResult },
       } = await supList();
-      // console.log(supListResult);
 
       const {
         body: { items: supDetailResult },
       } = await supDetail();
-      // console.log(supDetailResult);
 
       const {
-        I2710: { row },
+        I2710: { row: nutResult },
       } = await nutDetail();
-      console.log(row);
+
+      setSupListData(supListResult);
+      setSupDetailData(supDetailResult);
+      setNutData(nutResult);
     })();
   }, []);
+
+  // console.log(supListData);
+  // console.log(supDetailData);
+  // console.log(nutData);
 
   return <div>Home</div>;
 };
