@@ -14,8 +14,10 @@ export const Home = () => {
       } = await supDetail();
       // console.log(supDetailResult);
 
-      const nutResult = await nutDetail();
-      console.log(nutResult.12710);
+      const {
+        I2710: { row },
+      } = await nutDetail();
+      console.log(row);
     })();
   }, []);
 
