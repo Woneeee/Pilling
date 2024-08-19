@@ -9,6 +9,7 @@ import { Signup } from "./pages/login/Signup";
 import { Recommand } from "./pages/recommand/Recommand";
 import { NutDetail } from "./pages/detail/NutDetail";
 import { SupDetail } from "./pages/detail/SupDetail";
+import { Search } from "./pages/search/Search";
 
 const Router = () => {
   return (
@@ -21,6 +22,7 @@ const Router = () => {
         <Route path={routes.supdetail} element={<SupDetail />} />
         <Route path={routes.login} element={<Login />} />
         <Route path={routes.signup} element={<Signup />} />
+        <Route path={routes.search} element={<Search />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
       <Footer />

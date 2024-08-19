@@ -5,4 +5,5 @@ export const routes = {
   supdetail: "/supdetail/:id",
   login: "/login",
   signup: "/signup",
+  search: "/search",
 };
