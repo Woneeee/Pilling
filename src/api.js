@@ -11,3 +11,20 @@ const Kakao = axios.create({
 export const getKakaoImg = (params) => {
   return Kakao.get("/v2/search/image", { params }).then((res) => res);
 };
+
+// ---------------------------------------------------------------------
+
+const fetch = require("node-fetch");
+const serviceKey =
+  "LNn5PaYmx5QeK6lz%2FO%2BtXumj4%2B9%2FzuMa4SWLHaZ6CRqBZm1G2Y%2BCREbroaN%2BDjW1UKysFG1RXkpajRrQh1qR1g%3D%3D";
+const baseURL = "https://apis.data.go.kr/1471000/HtfsInfoService03/";
+
+export const supList = () =>
+  fetch(
+    `${baseURL}getHtfsList01?pageNo=1&numOfRows=100&ServiceKey=${serviceKey}&type=json`
+  ).then((res) => res.json());
+
+export const supDetail = () =>
+  fetch(
+    `${baseURL}getHtfsItem01?pageNo=1&numOfRows=100&ServiceKey=${serviceKey}&type=json`
+  ).then((res) => res.json());
