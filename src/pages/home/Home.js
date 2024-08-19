@@ -1,13 +1,21 @@
 import { useEffect } from "react";
-import { supDetail, supList } from "../../api";
+import { nutDetail, supDetail, supList } from "../../api";
 
 export const Home = () => {
   useEffect(() => {
     (async () => {
       const {
-        body: { items },
+        body: { items: supListResult },
       } = await supList();
-      console.log(items);
+      // console.log(supListResult);
+
+      const {
+        body: { items: supDetailResult },
+      } = await supDetail();
+      // console.log(supDetailResult);
+
+      const nutResult = await nutDetail();
+      console.log(nutResult.12710);
     })();
   }, []);
 
