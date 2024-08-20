@@ -49,7 +49,6 @@ const ListContainer = styled.ul`
     background-color: ${point.smooth};
     border-radius: 30px;
     padding: 12px 17px;
-    text-align: center;
     font-size: 16px;
     font-weight: 500;
     margin-right: 15px;
@@ -91,10 +90,13 @@ export const Recommand = () => {
   // console.log(supListData);
   // console.log(supDetailData);
   // console.log(nutData);
-  // console.log(
-  //   supDetailData?.filter((res) => res.item.MAIN_FNCTN.includes("단백질"))
-  // );
+  console.log(
+    supDetailData?.filter((res) => res.item.MAIN_FNCTN.includes("면역력"))
+  );
   // console.log(nutData?.filter((res) => res?.PRIMARY_FNCLTY?.includes("면역")));
+  // console.log(
+  //   supDetailData?.filter((res) => res?.item.PRDUCT?.includes("알로에"))
+  // );
 
   return (
     <>
