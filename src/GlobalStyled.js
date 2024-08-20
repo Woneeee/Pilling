@@ -4,6 +4,7 @@ import reset from "styled-reset";
 export const point = {
   color: "#5871ff",
   smooth: "#5871ff40",
+  verySmooth: "#5871ff10",
 };
 
 export const GlobalStyled = createGlobalStyle`

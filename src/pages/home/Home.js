@@ -1,10 +1,23 @@
 import { useEffect, useState } from "react";
 import { nutDetail, supDetail, supList } from "../../api";
+import { Loading } from "../../components/Loading";
+import { MainBanner } from "./components/MainBanner";
+import styled from "styled-components";
+import { Conditions } from "./components/Conditions";
+
+const Container = styled.div`
+  max-width: 1260px;
+  width: 100%;
+  height: 100%;
+  background-color: #c6dff120;
+  margin: 0 auto;
+`;
 
 export const Home = () => {
   const [supListData, setSupListData] = useState();
   const [supDetailData, setSupDetailData] = useState();
   const [nutData, setNutData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -16,13 +29,14 @@ export const Home = () => {
         body: { items: supDetailResult },
       } = await supDetail();
 
-      const {
-        I2710: { row: nutResult },
-      } = await nutDetail();
+      // const {
+      //   I2710: { row: nutResult },
+      // } = await nutDetail();
 
       setSupListData(supListResult);
       setSupDetailData(supDetailResult);
-      setNutData(nutResult);
+      // setNutData(nutResult);
+      setIsLoading(false);
     })();
   }, []);
 
@@ -30,5 +44,19 @@ export const Home = () => {
   // console.log(supDetailData);
   // console.log(nutData);
 
-  return <div>Home</div>;
+  return (
+    <>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <Container>
+            <MainBanner />
+
+            <Conditions />
+          </Container>
+        </>
+      )}
+    </>
+  );
 };

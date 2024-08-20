@@ -5,13 +5,15 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { routes } from "../routes";
 import { point } from "../GlobalStyled";
-import { click } from "@testing-library/user-event/dist/click";
 
 const Container = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;
 
 const Wrap = styled.div`
@@ -21,6 +23,7 @@ const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: white;
 `;
 
 const Logo = styled.div`
@@ -40,7 +43,7 @@ const User = styled.ul`
     transition-duration: 0.2s;
   }
   li:hover {
-    transform: scale(1.1);
+    transform: scale(1.12);
   }
 `;
 
