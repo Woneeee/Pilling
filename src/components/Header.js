@@ -4,6 +4,8 @@ import { GoSearch } from "react-icons/go";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { routes } from "../routes";
+import { point } from "../GlobalStyled";
+import { click } from "@testing-library/user-event/dist/click";
 
 const Container = styled.div`
   width: 100%;
@@ -30,18 +32,15 @@ const Logo = styled.div`
   }
 `;
 
-const Menu = styled.div`
-  font-size: 18px;
-  width: 25%;
-  display: flex;
-  justify-content: space-between;
-`;
-
-const User = styled.div`
+const User = styled.ul`
   display: flex;
   li {
     margin-left: 30px;
     font-size: 23px;
+    transition-duration: 0.2s;
+  }
+  li:hover {
+    transform: scale(1.1);
   }
 `;
 
@@ -49,35 +48,25 @@ export const Header = () => {
   return (
     <Container>
       <Wrap>
-        <Link to={routes.home}>
-          <Logo>
+        <Logo>
+          <Link to={routes.home}>
             <CgPill />
             &nbsp;Pilling
-          </Logo>
-        </Link>
-
-        <Menu>
-          <Link>
-            <li>성분별 영양제</li>
           </Link>
-
-          <Link>
-            <li>기능별 영양제</li>
-          </Link>
-        </Menu>
+        </Logo>
 
         <User>
-          <Link to={routes.search}>
-            <li>
+          <li>
+            <Link to={routes.search}>
               <GoSearch />
-            </li>
-          </Link>
+            </Link>
+          </li>
 
-          <Link to={routes.login}>
-            <li>
+          <li>
+            <Link to={routes.login}>
               <FaUser />
-            </li>
-          </Link>
+            </Link>
+          </li>
         </User>
       </Wrap>
     </Container>
