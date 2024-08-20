@@ -14,6 +14,7 @@ const Container = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  background-color: white;
 `;
 
 const Wrap = styled.div`
@@ -23,7 +24,6 @@ const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
 `;
 
 const Logo = styled.div`
