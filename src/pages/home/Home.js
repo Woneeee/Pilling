@@ -27,23 +27,20 @@ export const Home = () => {
         body: { items: supDetailResult },
       } = await supDetail();
 
-      // const {
-      //   I2710: { row: nutResult },
-      // } = await nutDetail();
+      const {
+        I2710: { row: nutResult },
+      } = await nutDetail();
 
       setSupListData(supListResult);
       setSupDetailData(supDetailResult);
-      // setNutData(nutResult);
+      setNutData(nutResult);
       setIsLoading(false);
     })();
   }, []);
 
   // console.log(supListData);
-  console.log(supDetailData);
+  // console.log(supDetailData);
   // console.log(nutData);
-  // console.log(
-  //   supDetailData?.filter((res) => res.item.MAIN_FNCTN.includes("단백질"))
-  // );
 
   return (
     <>

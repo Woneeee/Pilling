@@ -29,7 +29,7 @@ export const supDetail = () =>
     `${baseURL}getHtfsItem01?pageNo=1&numOfRows=100&ServiceKey=${serviceKey}&type=json`
   ).then((res) => res.json());
 
-// export const nutDetail = () =>
-//   fetch(
-//     "http://openapi.foodsafetykorea.go.kr/api/c116e08d12bd44aca000/I2710/json/1/100"
-//   ).then((res) => res.json());
+export const nutDetail = () =>
+  fetch(
+    "http://openapi.foodsafetykorea.go.kr/api/c116e08d12bd44aca000/I2710/json/1/100"
+  ).then((res) => res.json());

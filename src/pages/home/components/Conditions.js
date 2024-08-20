@@ -1,24 +1,30 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { routes } from "../../../routes";
-import { FaAngry, FaArrowRight, FaHeartbeat } from "react-icons/fa";
+import { FaArrowRight, FaHeartbeat } from "react-icons/fa";
 import { BiSolidSleepy } from "react-icons/bi";
-import { MdHealthAndSafety, MdRemoveRedEye } from "react-icons/md";
+import {
+  MdHealthAndSafety,
+  MdOutlineHealthAndSafety,
+  MdRemoveRedEye,
+} from "react-icons/md";
 import { LuBone } from "react-icons/lu";
 import { GiMuscleUp } from "react-icons/gi";
 import { point } from "../../../GlobalStyled";
+import { RiHeartPulseLine } from "react-icons/ri";
+import { IoEyeOutline } from "react-icons/io5";
 
 const ConContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 90px;
 `;
 
 const Wrap = styled.div`
   max-width: 1260px;
   width: 100%;
-  /* background-color: pink; */
   h2 {
     font-size: 25px;
     font-weight: 500;
@@ -44,8 +50,7 @@ const GoSearch = styled.div`
 
 const Condition = styled.ul`
   width: 100%;
-  /* background-color: aliceblue; */
-  margin-top: 20px;
+  margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   column-gap: 40px;
@@ -92,7 +97,7 @@ export const Conditions = () => {
           <li>
             <Link to={"/recommand/면역력"}>
               <Bg>
-                <MdHealthAndSafety />
+                <MdOutlineHealthAndSafety />
               </Bg>
               <h3>면역력</h3>
             </Link>
@@ -100,7 +105,7 @@ export const Conditions = () => {
           <li>
             <Link to={"/recommand/콜레스테롤"}>
               <Bg>
-                <FaHeartbeat />
+                <RiHeartPulseLine />
               </Bg>
               <h3>콜레스테롤</h3>
             </Link>
@@ -116,7 +121,7 @@ export const Conditions = () => {
           <li>
             <Link to={"/recommand/눈"}>
               <Bg>
-                <MdRemoveRedEye />
+                <IoEyeOutline />
               </Bg>
               <h3>눈</h3>
             </Link>

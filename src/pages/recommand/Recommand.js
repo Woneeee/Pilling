@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { supDetail, supList } from "../../api";
+import { nutDetail, supDetail, supList } from "../../api";
 import { Loading } from "../../components/Loading";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { point } from "../../GlobalStyled";
 
 const STitle = styled.div`
   margin-top: 60px;
@@ -10,13 +11,11 @@ const STitle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: pink;
 `;
 
 const TitleWrap = styled.div`
   max-width: 1260px;
   width: 100%;
-  background-color: aliceblue;
   h5 {
     font-size: 20px;
     text-align: center;
@@ -33,14 +32,28 @@ const NutContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: slateblue;
+  border-bottom: 1px solid #88888850;
 `;
 
 const NutWrap = styled.div`
   max-width: 1260px;
   width: 100%;
-  height: 200px;
-  background-color: skyblue;
+`;
+
+const ListContainer = styled.ul`
+  width: 100%;
+  height: 100%;
+  padding: 35px 0 25px 0;
+  display: flex;
+  li {
+    background-color: ${point.smooth};
+    border-radius: 30px;
+    padding: 12px 17px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    margin-right: 15px;
+  }
 `;
 
 export const Recommand = () => {
@@ -49,6 +62,7 @@ export const Recommand = () => {
   const [nutData, setNutData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
+  const [nutNameData, setNutNameData] = useState();
 
   useEffect(() => {
     (async () => {
@@ -60,14 +74,17 @@ export const Recommand = () => {
         body: { items: supDetailResult },
       } = await supDetail();
 
-      // const {
-      //   I2710: { row: nutResult },
-      // } = await nutDetail();
+      const {
+        I2710: { row: nutResult },
+      } = await nutDetail();
 
       setSupListData(supListResult);
       setSupDetailData(supDetailResult);
-      // setNutData(nutResult);
+      setNutData(nutResult);
       setIsLoading(false);
+
+      const nut = nutResult.filter((res) => res.PRIMARY_FNCLTY.includes(id));
+      setNutNameData(nut);
     })();
   }, []);
 
@@ -77,6 +94,7 @@ export const Recommand = () => {
   // console.log(
   //   supDetailData?.filter((res) => res.item.MAIN_FNCTN.includes("단백질"))
   // );
+  // console.log(nutData?.filter((res) => res?.PRIMARY_FNCLTY?.includes("면역")));
 
   return (
     <>
@@ -93,7 +111,15 @@ export const Recommand = () => {
           </STitle>
 
           <NutContainer>
-            <NutWrap></NutWrap>
+            <NutWrap>
+              <ListContainer>
+                {nutNameData.map((res) => (
+                  <Link to={`/nutdetail/${res.PRDCT_NM}`} key={res.PRDCT_NM}>
+                    <li>{res.PRDCT_NM}</li>
+                  </Link>
+                ))}
+              </ListContainer>
+            </NutWrap>
           </NutContainer>
         </>
       )}
