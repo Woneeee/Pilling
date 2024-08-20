@@ -41,8 +41,11 @@ export const Home = () => {
   }, []);
 
   // console.log(supListData);
-  // console.log(supDetailData);
+  console.log(supDetailData);
   // console.log(nutData);
+  // console.log(
+  //   supDetailData?.filter((res) => res.item.MAIN_FNCTN.includes("단백질"))
+  // );
 
   return (
     <>

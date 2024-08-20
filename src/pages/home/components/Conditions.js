@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { routes } from "../../../routes";
 import { FaAngry, FaArrowRight, FaHeartbeat } from "react-icons/fa";
 import { BiSolidSleepy } from "react-icons/bi";
-import { MdRemoveRedEye } from "react-icons/md";
+import { MdHealthAndSafety, MdRemoveRedEye } from "react-icons/md";
 import { LuBone } from "react-icons/lu";
 import { GiMuscleUp } from "react-icons/gi";
 import { point } from "../../../GlobalStyled";
@@ -90,11 +90,11 @@ export const Conditions = () => {
 
         <Condition>
           <li>
-            <Link to={"/recommand/스트레스"}>
+            <Link to={"/recommand/면역력"}>
               <Bg>
-                <FaAngry />
+                <MdHealthAndSafety />
               </Bg>
-              <h3>스트레스</h3>
+              <h3>면역력</h3>
             </Link>
           </li>
           <li>
