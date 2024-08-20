@@ -17,6 +17,7 @@ export const GlobalStyled = createGlobalStyle`
   body {
     color: #322e22;
     font-family: "Noto Sans KR", sans-serif;
+    background-color: #c6dff120;
   }
 
   a {

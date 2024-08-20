@@ -9,8 +9,6 @@ const Container = styled.div`
   /* max-width: 1260px; */
   width: 100%;
   height: 100%;
-  background-color: #c6dff120;
-  margin: 0 auto;
 `;
 
 export const Home = () => {
