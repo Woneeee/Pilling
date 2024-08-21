@@ -31,5 +31,5 @@ export const supDetail = () =>
 
 export const nutDetail = () =>
   fetch(
-    "http://openapi.foodsafetykorea.go.kr/api/c116e08d12bd44aca000/I2710/json/1/100"
+    "http://openapi.foodsafetykorea.go.kr/api/c116e08d12bd44aca000/I2710/json/1/450"
   ).then((res) => res.json());

@@ -135,7 +135,7 @@ export const Conditions = () => {
             </Link>
           </li>
           <li>
-            <Link to={"/recommand/운동단백질"}>
+            <Link to={"/recommand/운동"}>
               <Bg>
                 <GiMuscleUp />
               </Bg>

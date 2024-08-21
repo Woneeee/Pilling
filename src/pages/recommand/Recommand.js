@@ -87,16 +87,17 @@ export const Recommand = () => {
     })();
   }, []);
 
-  // console.log(supListData);
+  console.log(supListData);
   // console.log(supDetailData);
   // console.log(nutData);
-  console.log(
-    supDetailData?.filter((res) => res.item.MAIN_FNCTN.includes("면역력"))
-  );
+  // console.log(
+  //   supDetailData?.filter((res) => res.item.MAIN_FNCTN.includes("면역력"))
+  // );
   // console.log(nutData?.filter((res) => res?.PRIMARY_FNCLTY?.includes("면역")));
   // console.log(
   //   supDetailData?.filter((res) => res?.item.PRDUCT?.includes("알로에"))
   // );
+  // console.log(nutNameData);
 
   return (
     <>
