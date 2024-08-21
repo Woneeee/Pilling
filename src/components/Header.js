@@ -1,10 +1,12 @@
 import { CgPill } from "react-icons/cg";
 import { FaUser } from "react-icons/fa";
 import { GoSearch } from "react-icons/go";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { routes } from "../routes";
 import { point } from "../GlobalStyled";
+import { useEffect, useState } from "react";
+import { IoLogOut } from "react-icons/io5";
 
 const Container = styled.div`
   width: 100%;
@@ -40,7 +42,7 @@ const User = styled.ul`
   display: flex;
   li {
     margin-left: 30px;
-    font-size: 23px;
+    font-size: 25px;
     transition-duration: 0.2s;
   }
   li:hover {
@@ -49,6 +51,25 @@ const User = styled.ul`
 `;
 
 export const Header = () => {
+  const [isLogin, setIsLogin] = useState(false);
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    (() => {
+      if (localStorage.getItem("login") === "on") {
+        setIsLogin(true);
+      }
+    })();
+  }, [pathname]);
+
+  const logoutHandler = () => {
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
+    localStorage.removeItem("login");
+    alert("로그아웃 되었습니다 😊");
+    setIsLogin(false);
+  };
+
   return (
     <Container>
       <Wrap>
@@ -67,9 +88,15 @@ export const Header = () => {
           </li>
 
           <li>
-            <Link to={routes.login}>
-              <FaUser />
-            </Link>
+            {isLogin ? (
+              <Link onClick={logoutHandler}>
+                <IoLogOut />
+              </Link>
+            ) : (
+              <Link to={routes.login}>
+                <FaUser />
+              </Link>
+            )}
           </li>
         </User>
       </Wrap>

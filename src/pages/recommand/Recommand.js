@@ -7,7 +7,6 @@ import { point } from "../../GlobalStyled";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "./css/swiperStyle.css";
-import { useKakaoImg } from "../../lib/useKakaoImg";
 
 const STitle = styled.div`
   margin-top: 60px;
@@ -151,13 +150,13 @@ export const Recommand = () => {
       setNutData(nutResult);
       setIsLoading(false);
 
-      // const supTotalPage = 416;
-
-      const nut = nutResult.filter((res) => res.PRIMARY_FNCLTY.includes(id));
+      const nut = nutResult.filter(
+        (res) => res.PRIMARY_FNCLTY.includes(id) === true
+      );
       setNutNameData(nut);
 
-      const supName = supDetailResult.filter((res) =>
-        res.item.MAIN_FNCTN.includes(id)
+      const supName = supDetailResult.filter(
+        (res) => res.item.MAIN_FNCTN.includes(id) === true
       );
       setSupNameData(supName);
     })();
