@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useKakaoImg } from "../lib/useKakaoImg";
 
 const Container = styled.div`
   padding: 280px 0;

@@ -4,6 +4,10 @@ import { Loading } from "../../components/Loading";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import { point } from "../../GlobalStyled";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "./css/swiperStyle.css";
+import { useKakaoImg } from "../../lib/useKakaoImg";
 
 const STitle = styled.div`
   margin-top: 60px;
@@ -55,6 +59,56 @@ const ListContainer = styled.ul`
   }
 `;
 
+const SupContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: pink;
+  margin-top: 40px;
+`;
+
+const SupWrap = styled.div`
+  max-width: 1260px;
+  width: 100%;
+  background-color: gray;
+  h2 {
+    font-size: 25px;
+  }
+`;
+
+const Product = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
+  row-gap: 20px;
+  margin-top: 20px;
+`;
+
+const Con = styled.div`
+  width: 100%;
+  background-color: aliceblue;
+`;
+
+const Img = styled.div`
+  width: 100%;
+  height: 350px;
+  border: 1px solid #888888;
+  border-radius: 10px;
+`;
+
+const Text = styled.div`
+  p {
+    opacity: 0.7;
+    margin-top: 10px;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 8px;
+  }
+`;
+
 export const Recommand = () => {
   const [supListData, setSupListData] = useState();
   const [supDetailData, setSupDetailData] = useState();
@@ -62,16 +116,31 @@ export const Recommand = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const [nutNameData, setNutNameData] = useState();
+  const [supNameData, setSupNameData] = useState();
 
   useEffect(() => {
     (async () => {
       const {
-        body: { items: supListResult },
-      } = await supList();
+        body: { items: items1 },
+      } = await supList(1);
+      const {
+        body: { items: items2 },
+      } = await supList(2);
+      const {
+        body: { items: items3 },
+      } = await supList(3);
+      const supListResult = items1.concat(items2, items3);
 
       const {
-        body: { items: supDetailResult },
-      } = await supDetail();
+        body: { items: detail1 },
+      } = await supDetail(1);
+      const {
+        body: { items: detail2 },
+      } = await supDetail(2);
+      const {
+        body: { items: detail3 },
+      } = await supDetail(3);
+      const supDetailResult = detail1.concat(detail2, detail3);
 
       const {
         I2710: { row: nutResult },
@@ -82,21 +151,27 @@ export const Recommand = () => {
       setNutData(nutResult);
       setIsLoading(false);
 
+      // const supTotalPage = 416;
+
       const nut = nutResult.filter((res) => res.PRIMARY_FNCLTY.includes(id));
       setNutNameData(nut);
+
+      const supName = supDetailResult.filter((res) =>
+        res.item.MAIN_FNCTN.includes(id)
+      );
+      setSupNameData(supName);
     })();
   }, []);
 
-  console.log(supListData);
+  // console.log(supListData);
   // console.log(supDetailData);
   // console.log(nutData);
+
   // console.log(
   //   supDetailData?.filter((res) => res.item.MAIN_FNCTN.includes("면역력"))
   // );
   // console.log(nutData?.filter((res) => res?.PRIMARY_FNCLTY?.includes("면역")));
-  // console.log(
-  //   supDetailData?.filter((res) => res?.item.PRDUCT?.includes("알로에"))
-  // );
+
   // console.log(nutNameData);
 
   return (
@@ -115,15 +190,41 @@ export const Recommand = () => {
 
           <NutContainer>
             <NutWrap>
-              <ListContainer>
+              <Swiper slidesPerView={2.2}>
                 {nutNameData.map((res) => (
                   <Link to={`/nutdetail/${res.PRDCT_NM}`} key={res.PRDCT_NM}>
-                    <li>{res.PRDCT_NM}</li>
+                    <SwiperSlide>{res.PRDCT_NM}</SwiperSlide>
                   </Link>
                 ))}
-              </ListContainer>
+              </Swiper>
             </NutWrap>
           </NutContainer>
+
+          <SupContainer>
+            <SupWrap>
+              <h2>제품</h2>
+
+              <Product>
+                {supNameData.map((res) => (
+                  <Link
+                    key={res.item.PRDUCT}
+                    to={`/supdetail/${res.item.PRDUCT}`}
+                  >
+                    <Con>
+                      <Img>
+                        <img src="" alt="" />
+                      </Img>
+
+                      <Text>
+                        <p>{res.item.ENTRPS}</p>
+                        <h2>{res.item.PRDUCT}</h2>
+                      </Text>
+                    </Con>
+                  </Link>
+                ))}
+              </Product>
+            </SupWrap>
+          </SupContainer>
         </>
       )}
     </>
