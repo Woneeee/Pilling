@@ -39,11 +39,11 @@ const GoSearch = styled.div`
   border: 2px solid ${point.color};
   margin-top: 20px;
   border-radius: 40px;
-  display: flex;
-  justify-content: space-between;
   padding: 10px;
   p {
     font-size: 15px;
+    display: flex;
+    justify-content: space-between;
   }
   &:hover {
     transform: scale(1.04);
@@ -118,14 +118,13 @@ export const Conditions = () => {
       <Wrap>
         <h2>어떤 고민이 있으신가요?</h2>
 
-        <Link to={routes.search}>
-          <GoSearch>
-            <p>고민별 제품 찾으러가기</p>
-            <span>
-              <FaArrowRight />
-            </span>
-          </GoSearch>
-        </Link>
+        <GoSearch>
+          <Link to={routes.search}>
+            <p>
+              고민별 제품 찾으러가기 <FaArrowRight />
+            </p>
+          </Link>
+        </GoSearch>
 
         <Condition>
           <li>
