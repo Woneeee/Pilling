@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { nutDetail, supDetail, supList } from "../../api";
+import { supDetail } from "../../api";
 import { Loading } from "../../components/Loading";
 import { MainBanner } from "./components/MainBanner";
 import styled from "styled-components";

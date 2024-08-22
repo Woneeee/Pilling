@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { nutDetail, supDetail, supList } from "../../api";
+import { nutDetail, supDetail } from "../../api";
 import { Loading } from "../../components/Loading";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
@@ -51,25 +51,36 @@ const NutContainer = styled.div`
 const NutWrap = styled.div`
   max-width: 1260px;
   width: 100%;
+  padding-bottom: 10px;
+  a {
+    padding: 6px 10px;
+    background-color: ${point.verySmooth};
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 17px;
+  }
   @media screen and (max-width: 510px) {
     padding: 0 15px;
+    a {
+      font-size: 16px;
+    }
   }
 `;
 
-const ListContainer = styled.ul`
-  width: 100%;
-  height: 100%;
-  padding: 35px 0 25px 0;
-  display: flex;
-  li {
-    background-color: ${point.smooth};
-    border-radius: 30px;
-    padding: 12px 17px;
-    font-size: 16px;
-    font-weight: 500;
-    margin-right: 15px;
-  }
-`;
+// const ListContainer = styled.ul`
+//   width: 100%;
+//   height: 100%;
+//   padding: 35px 0 25px 0;
+//   display: flex;
+//   li {
+//     background-color: ${point.smooth};
+//     border-radius: 30px;
+//     padding: 12px 17px;
+//     font-size: 16px;
+//     font-weight: 500;
+//     margin-right: 15px;
+//   }
+// `;
 
 const SupContainer = styled.div`
   width: 100%;
@@ -92,7 +103,7 @@ const SupWrap = styled.div`
 
 const Product = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 25px;
   row-gap: 30px;
   margin-top: 20px;
@@ -108,7 +119,7 @@ const Con = styled.div`
 
 const Img = styled.div`
   width: 100%;
-  height: 350px;
+  height: 300px;
   border: 1px solid #888888;
   border-radius: 10px;
 
@@ -205,11 +216,19 @@ export const Recommand = () => {
 
           <NutContainer>
             <NutWrap>
-              <Swiper slidesPerView={2.2}>
+              <Swiper
+                slidesPerView={4.3}
+                breakpoints={{
+                  860: { slidesPerView: 4.3 },
+                  300: { slidesPerView: 1.2 },
+                }}
+              >
                 {nutNameData.map((res) => (
-                  <Link to={`/nutdetail/${res.PRDCT_NM}`} key={res.PRDCT_NM}>
-                    <SwiperSlide>{res.PRDCT_NM}</SwiperSlide>
-                  </Link>
+                  <SwiperSlide>
+                    <Link to={`/nutdetail/${res.PRDCT_NM}`} key={res.PRDCT_NM}>
+                      {res.PRDCT_NM}
+                    </Link>
+                  </SwiperSlide>
                 ))}
               </Swiper>
             </NutWrap>
