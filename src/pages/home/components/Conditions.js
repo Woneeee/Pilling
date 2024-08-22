@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { routes } from "../../../routes";
-import { FaArrowRight, FaHeartbeat } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 import { BiSolidSleepy } from "react-icons/bi";
 import {
   MdHealthAndSafety,
@@ -20,6 +20,9 @@ const ConContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 90px;
+  @media screen and (max-width: 510px) {
+    margin-top: 45px;
+  }
 `;
 
 const Wrap = styled.div`
@@ -29,6 +32,9 @@ const Wrap = styled.div`
     font-size: 25px;
     font-weight: 500;
     letter-spacing: -1px;
+  }
+  @media screen and (max-width: 510px) {
+    padding: 0 15px;
   }
 `;
 
@@ -45,6 +51,13 @@ const GoSearch = styled.div`
   }
   &:hover {
     transform: scale(1.04);
+  }
+  @media screen and (max-width: 510px) {
+    width: 250px;
+    padding: 8px;
+    &:hover {
+      transform: none;
+    }
   }
 `;
 
@@ -64,6 +77,18 @@ const Condition = styled.ul`
       transform: scale(1.06);
     }
   }
+  @media screen and (max-width: 510px) {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+    row-gap: 20px;
+    li {
+      display: flex;
+      justify-content: center;
+      &:hover {
+        transform: none;
+      }
+    }
+  }
 `;
 
 const Bg = styled.div`
@@ -75,6 +100,13 @@ const Bg = styled.div`
   justify-content: center;
   svg {
     font-size: 60px;
+  }
+  @media screen and (max-width: 510px) {
+    width: 100px;
+    height: 100px;
+    svg {
+      font-size: 40px;
+    }
   }
 `;
 

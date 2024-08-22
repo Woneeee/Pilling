@@ -63,14 +63,14 @@ const SupContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: pink;
+  /* background-color: pink; */
   margin-top: 40px;
 `;
 
 const SupWrap = styled.div`
   max-width: 1260px;
   width: 100%;
-  background-color: gray;
+  /* background-color: gray; */
   h2 {
     font-size: 25px;
   }
@@ -86,7 +86,7 @@ const Product = styled.div`
 
 const Con = styled.div`
   width: 100%;
-  background-color: aliceblue;
+  /* background-color: aliceblue; */
 `;
 
 const Img = styled.div`

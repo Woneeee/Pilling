@@ -27,6 +27,9 @@ const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @media screen and (max-width: 510px) {
+    padding: 12px 15px;
+  }
 `;
 
 const Logo = styled.div`
@@ -35,6 +38,12 @@ const Logo = styled.div`
   letter-spacing: -1px;
   svg {
     font-size: 23px;
+  }
+  @media screen and (max-width: 510px) {
+    font-size: 23px;
+    svg {
+      font-size: 18px;
+    }
   }
 `;
 
@@ -47,6 +56,11 @@ const User = styled.ul`
   }
   li:hover {
     transform: scale(1.12);
+  }
+  @media screen and (max-width: 510px) {
+    li {
+      font-size: 23px;
+    }
   }
 `;
 

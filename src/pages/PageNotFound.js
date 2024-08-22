@@ -18,6 +18,8 @@ const Text = styled.div`
 `;
 
 export const PageNotFound = () => {
+  useKakaoImg("지민");
+
   return (
     <Container>
       <Text>

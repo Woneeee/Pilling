@@ -8,6 +8,10 @@ const Container = styled.div`
   align-items: center;
   background: url(${(props) => props.$bgUrl}) no-repeat top / cover;
   position: relative;
+
+  @media screen and (max-width: 510px) {
+    height: 500px;
+  }
 `;
 
 const Bg = styled.div`
@@ -20,15 +24,30 @@ const Bg = styled.div`
 `;
 
 const Text = styled.div`
-  margin-top: 60px;
+  margin-top: 200px;
   margin-left: 40px;
   h2 {
+    color: white;
     font-size: 35px;
     line-height: 55px;
     font-weight: 500;
   }
   h2:nth-child(2) {
     font-size: 50px;
+  }
+
+  @media screen and (max-width: 510px) {
+    margin-top: 300px;
+    margin-left: 15px;
+    max-width: 330px;
+    h2 {
+      font-size: 27px;
+      font-weight: 600;
+      line-height: 40px;
+    }
+    h2:nth-child(2) {
+      font-size: 32px;
+    }
   }
 `;
 

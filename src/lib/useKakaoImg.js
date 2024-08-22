@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { getKakaoImg } from "../api";
+import { PiImageSquareFill } from "react-icons/pi";
 
 export const useKakaoImg = (searchWhat) => {
   const [imgData, setImgData] = useState();
+  const [imgUrlData, setImgUrlData] = useState();
 
   useEffect(() => {
     imgSearchHandler();
@@ -22,7 +24,12 @@ export const useKakaoImg = (searchWhat) => {
     } = await getKakaoImg(params); // api 호출
     // console.log(img.image_url); // 결과 호출
     setImgData(documents);
+
+    const imgUrl = documents.map((res) => res.image_url);
+    setImgUrlData(imgUrl);
   };
 
-  console.log(imgData);
+  // console.log(imgUrlData);
+
+  return imgUrlData;
 };
