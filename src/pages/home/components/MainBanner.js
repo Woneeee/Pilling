@@ -3,11 +3,12 @@ import { point } from "../../../GlobalStyled";
 
 const Container = styled.div`
   width: 100%;
-  height: 660px;
+  height: 720px;
   display: flex;
   align-items: center;
   background: url(${(props) => props.$bgUrl}) no-repeat top / cover;
   position: relative;
+  background-position-y: 22%;
 
   @media screen and (max-width: 510px) {
     height: 500px;
@@ -24,16 +25,16 @@ const Bg = styled.div`
 `;
 
 const Text = styled.div`
-  margin-top: 200px;
+  margin-top: 400px;
   margin-left: 40px;
   h2 {
     color: white;
-    font-size: 35px;
+    font-size: 38px;
     line-height: 55px;
     font-weight: 500;
   }
   h2:nth-child(2) {
-    font-size: 50px;
+    font-size: 46px;
   }
 
   @media screen and (max-width: 510px) {
