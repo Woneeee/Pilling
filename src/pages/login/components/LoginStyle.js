@@ -36,8 +36,10 @@ export const Wrap = styled.form`
     margin-top: 6px;
     padding: 0 10px;
     box-sizing: border-box;
+
     &::placeholder {
       font-size: 15px;
+      opacity: 0.7;
     }
   }
   button {
@@ -68,7 +70,7 @@ export const Text = styled.div`
   margin-top: 40px;
   h2 {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
   }
   span {
     color: crimson;

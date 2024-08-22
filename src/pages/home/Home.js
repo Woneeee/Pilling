@@ -6,41 +6,26 @@ import styled from "styled-components";
 import { Conditions } from "./components/Conditions";
 
 const Container = styled.div`
-  /* max-width: 1260px; */
   width: 100%;
   height: 100%;
 `;
 
 export const Home = () => {
-  const [supListData, setSupListData] = useState();
   const [supDetailData, setSupDetailData] = useState();
-  const [nutData, setNutData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       const {
-        body: { items: supListResult },
-      } = await supList();
-
-      const {
         body: { items: supDetailResult },
       } = await supDetail();
 
-      const {
-        I2710: { row: nutResult },
-      } = await nutDetail();
-
-      setSupListData(supListResult);
       setSupDetailData(supDetailResult);
-      setNutData(nutResult);
       setIsLoading(false);
     })();
   }, []);
 
-  // console.log(supListData);
   // console.log(supDetailData);
-  // console.log(nutData);
 
   return (
     <>

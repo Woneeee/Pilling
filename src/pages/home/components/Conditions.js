@@ -3,11 +3,7 @@ import styled from "styled-components";
 import { routes } from "../../../routes";
 import { FaArrowRight } from "react-icons/fa";
 import { BiSolidSleepy } from "react-icons/bi";
-import {
-  MdHealthAndSafety,
-  MdOutlineHealthAndSafety,
-  MdRemoveRedEye,
-} from "react-icons/md";
+import { MdOutlineHealthAndSafety } from "react-icons/md";
 import { LuBone } from "react-icons/lu";
 import { GiMuscleUp } from "react-icons/gi";
 import { point } from "../../../GlobalStyled";
@@ -87,6 +83,8 @@ const Condition = styled.ul`
       justify-content: center;
       h3 {
         margin-top: 10px;
+        font-size: 15px;
+        opacity: 0.8;
       }
       &:hover {
         transform: none;

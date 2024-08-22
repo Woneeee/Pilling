@@ -139,7 +139,6 @@ const Text = styled.div`
 `;
 
 export const Recommand = () => {
-  const [supListData, setSupListData] = useState();
   const [supDetailData, setSupDetailData] = useState();
   const [nutData, setNutData] = useState();
   const [isLoading, setIsLoading] = useState(true);
@@ -149,17 +148,6 @@ export const Recommand = () => {
 
   useEffect(() => {
     (async () => {
-      const {
-        body: { items: items1 },
-      } = await supList(1);
-      const {
-        body: { items: items2 },
-      } = await supList(2);
-      const {
-        body: { items: items3 },
-      } = await supList(3);
-      const supListResult = items1.concat(items2, items3);
-
       const {
         body: { items: detail1 },
       } = await supDetail(1);
@@ -175,7 +163,6 @@ export const Recommand = () => {
         I2710: { row: nutResult },
       } = await nutDetail();
 
-      setSupListData(supListResult);
       setSupDetailData(supDetailResult);
       setNutData(nutResult);
       setIsLoading(false);
@@ -192,7 +179,6 @@ export const Recommand = () => {
     })();
   }, []);
 
-  // console.log(supListData);
   // console.log(supDetailData);
   // console.log(nutData);
 

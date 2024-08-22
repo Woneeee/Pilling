@@ -13,6 +13,7 @@ const MainContainer = styled.div`
   align-items: center;
   /* background-color: pink; */
   margin-top: 60px;
+  border-bottom: 1px solid #55555540;
 `;
 
 const MainWrap = styled.div`
@@ -84,11 +85,15 @@ const InfoContainer = styled.div`
 
 const InfoWrap = styled.div`
   max-width: 1260px;
+  width: 100%;
   /* background-color: antiquewhite; */
   h2 {
     font-size: 25px;
     margin-top: 40px;
     font-weight: 500;
+  }
+  @media screen and (max-width: 510px) {
+    padding: 0 15px;
   }
 `;
 
@@ -111,11 +116,19 @@ const InfoText = styled.div`
     line-height: 25px;
     opacity: 0.8;
   }
+  @media screen and (max-width: 510px) {
+    h5 {
+      font-size: 19px;
+      width: 90x;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
 `;
 
 export const SupDetail = () => {
   const [supDetailData, setSupDetailData] = useState();
-  const [nutData, setNutData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const [supNameData, setSupNameData] = useState();
@@ -133,12 +146,7 @@ export const SupDetail = () => {
       } = await supDetail(3);
       const supDetailResult = detail1.concat(detail2, detail3);
 
-      const {
-        I2710: { row: nutResult },
-      } = await nutDetail();
-
       setSupDetailData(supDetailResult);
-      setNutData(nutResult);
       setIsLoading(false);
 
       const supName = supDetailResult.filter((res) =>
@@ -148,7 +156,7 @@ export const SupDetail = () => {
     })();
   }, []);
 
-  console.log(supNameData);
+  // console.log(supNameData);
 
   return (
     <>
@@ -189,6 +197,7 @@ export const SupDetail = () => {
                     textDecoration: "underline",
                     textDecorationColor: point.color,
                     textDecorationThickness: 3,
+                    fontWeight: "500",
                   }}
                 >
                   {supNameData.MAIN_FNCTN}
