@@ -33,6 +33,9 @@ const MainCon = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media screen and (max-width: 510px) {
+    height: 500px;
+  }
 `;
 
 const Img = styled.div`
@@ -41,6 +44,9 @@ const Img = styled.div`
   width: 100%;
   height: 55%;
   /* background-color: lightgray; */
+  @media screen and (max-width: 510px) {
+    height: 50%;
+  }
 `;
 
 const STitle = styled.div`
@@ -118,8 +124,8 @@ const InfoText = styled.div`
   }
   @media screen and (max-width: 510px) {
     h5 {
-      font-size: 19px;
-      width: 90x;
+      font-size: 18px;
+      width: 90px;
     }
     p {
       font-size: 16px;

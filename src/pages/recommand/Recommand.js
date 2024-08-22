@@ -174,18 +174,18 @@ export const Recommand = () => {
       } = await supDetail(3);
       const supDetailResult = detail1.concat(detail2, detail3);
 
-      const {
-        I2710: { row: nutResult },
-      } = await nutDetail();
+      // const {
+      //   I2710: { row: nutResult },
+      // } = await nutDetail();
 
       setSupDetailData(supDetailResult);
-      setNutData(nutResult);
+      // setNutData(nutResult);
       setIsLoading(false);
 
-      const nut = nutResult.filter(
-        (res) => res.PRIMARY_FNCLTY.includes(id) === true
-      );
-      setNutNameData(nut);
+      // const nut = nutResult.filter(
+      //   (res) => res.PRIMARY_FNCLTY.includes(id) === true
+      // );
+      // setNutNameData(nut);
 
       const supName = supDetailResult.filter(
         (res) => res.item.MAIN_FNCTN.includes(id) === true
@@ -196,11 +196,6 @@ export const Recommand = () => {
 
   // console.log(supDetailData);
   // console.log(nutData);
-
-  // console.log(
-  //   supDetailData?.filter((res) => res.item.MAIN_FNCTN.includes("면역력"))
-  // );
-  // console.log(nutData?.filter((res) => res?.PRIMARY_FNCLTY?.includes("면역")));
 
   // console.log(nutNameData);
 
@@ -218,7 +213,7 @@ export const Recommand = () => {
             </TitleWrap>
           </STitle>
 
-          <NutContainer>
+          {/* <NutContainer>
             <NutWrap>
               <Swiper
                 slidesPerView={4.3}
@@ -236,7 +231,7 @@ export const Recommand = () => {
                 ))}
               </Swiper>
             </NutWrap>
-          </NutContainer>
+          </NutContainer> */}
 
           <SupContainer>
             <SupWrap>
