@@ -7,6 +7,7 @@ import { point } from "../../GlobalStyled";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "./css/swiperStyle.css";
+import { useKakaoImg } from "../../lib/useKakaoImg";
 
 const STitle = styled.div`
   margin-top: 60px;
@@ -193,6 +194,8 @@ export const Recommand = () => {
       setSupNameData(supName);
     })();
   }, []);
+
+  useKakaoImg(supNameData.item.PRDUCT);
 
   // console.log(supDetailData);
   // console.log(nutData);

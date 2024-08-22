@@ -29,7 +29,5 @@ export const useKakaoImg = (searchWhat) => {
     setImgUrlData(imgUrl);
   };
 
-  // console.log(imgUrlData);
-
-  return imgUrlData;
+  return console.log(imgUrlData);
 };
