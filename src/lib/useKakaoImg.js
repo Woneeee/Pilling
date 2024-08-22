@@ -16,7 +16,7 @@ export const useKakaoImg = (searchWhat) => {
       query: searchWhat,
       sort: "accuracy", // accuracy | recency 정확도 or 최신
       page: 1, // 페이지번호
-      size: 10, // 한 페이지에 보여 질 문서의 개수
+      size: 1, // 한 페이지에 보여 질 문서의 개수
     };
 
     const {
@@ -29,5 +29,5 @@ export const useKakaoImg = (searchWhat) => {
     setImgUrlData(imgUrl);
   };
 
-  return console.log(imgUrlData);
+  return imgUrlData;
 };

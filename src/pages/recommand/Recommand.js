@@ -69,21 +69,6 @@ const NutWrap = styled.div`
   }
 `;
 
-// const ListContainer = styled.ul`
-//   width: 100%;
-//   height: 100%;
-//   padding: 35px 0 25px 0;
-//   display: flex;
-//   li {
-//     background-color: ${point.smooth};
-//     border-radius: 30px;
-//     padding: 12px 17px;
-//     font-size: 16px;
-//     font-weight: 500;
-//     margin-right: 15px;
-//   }
-// `;
-
 const SupContainer = styled.div`
   width: 100%;
   display: flex;
@@ -161,6 +146,7 @@ export const Recommand = () => {
   const { id } = useParams();
   const [nutNameData, setNutNameData] = useState();
   const [supNameData, setSupNameData] = useState();
+  const [supProData, setProData] = useState();
 
   useEffect(() => {
     (async () => {
@@ -192,15 +178,17 @@ export const Recommand = () => {
         (res) => res.item.MAIN_FNCTN.includes(id) === true
       );
       setSupNameData(supName);
+
+      const supProduct = supName.map((res) => res.item.PRDUCT);
+      setProData(supProduct);
     })();
   }, []);
-
-  useKakaoImg(supNameData.item.PRDUCT);
 
   // console.log(supDetailData);
   // console.log(nutData);
 
   // console.log(nutNameData);
+  // console.log(supProData);
 
   return (
     <>
