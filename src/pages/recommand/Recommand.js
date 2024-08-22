@@ -22,11 +22,21 @@ const TitleWrap = styled.div`
   h5 {
     font-size: 20px;
     text-align: center;
+    margin-top: 10px;
   }
   h2 {
     margin-top: 30px;
     font-size: 30px;
     font-weight: 500;
+  }
+  @media screen and (max-width: 510px) {
+    padding: 0 15px;
+    h5 {
+      font-size: 18px;
+    }
+    h2 {
+      font-size: 28px;
+    }
   }
 `;
 
@@ -41,6 +51,9 @@ const NutContainer = styled.div`
 const NutWrap = styled.div`
   max-width: 1260px;
   width: 100%;
+  @media screen and (max-width: 510px) {
+    padding: 0 15px;
+  }
 `;
 
 const ListContainer = styled.ul`
@@ -63,30 +76,34 @@ const SupContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: pink; */
   margin-top: 40px;
 `;
 
 const SupWrap = styled.div`
   max-width: 1260px;
   width: 100%;
-  /* background-color: gray; */
   h2 {
     font-size: 25px;
+  }
+  @media screen and (max-width: 510px) {
+    padding: 0 15px;
   }
 `;
 
 const Product = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  column-gap: 20px;
-  row-gap: 20px;
+  column-gap: 25px;
+  row-gap: 30px;
   margin-top: 20px;
+  @media screen and (max-width: 510px) {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 30px;
+  }
 `;
 
 const Con = styled.div`
   width: 100%;
-  /* background-color: aliceblue; */
 `;
 
 const Img = styled.div`
@@ -94,6 +111,10 @@ const Img = styled.div`
   height: 350px;
   border: 1px solid #888888;
   border-radius: 10px;
+
+  @media screen and (max-width: 510px) {
+    height: 200px;
+  }
 `;
 
 const Text = styled.div`
@@ -105,6 +126,15 @@ const Text = styled.div`
     font-size: 18px;
     font-weight: 500;
     margin-top: 8px;
+  }
+  @media screen and (max-width: 510px) {
+    p {
+      font-size: 15px;
+    }
+    h2 {
+      font-size: 17px;
+      line-height: 22px;
+    }
   }
 `;
 

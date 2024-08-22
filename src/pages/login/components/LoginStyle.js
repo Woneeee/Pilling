@@ -3,9 +3,9 @@ import { point } from "../../../GlobalStyled";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   @media screen and (max-width: 510px) {
-    height: 40vh;
+    height: 100%;
   }
 `;
 
@@ -19,7 +19,7 @@ export const Wrap = styled.form`
   flex-direction: column;
   border-radius: 5px;
   background-color: white;
-  margin: 260px auto;
+  margin: 220px auto;
   position: relative;
   h2 {
     font-size: 30px;

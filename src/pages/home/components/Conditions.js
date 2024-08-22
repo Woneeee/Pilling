@@ -63,7 +63,7 @@ const GoSearch = styled.div`
 
 const Condition = styled.ul`
   width: 100%;
-  margin-top: 30px;
+  margin-top: 35px;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   column-gap: 40px;
@@ -71,7 +71,7 @@ const Condition = styled.ul`
     text-align: center;
     h3 {
       font-weight: 500;
-      margin-top: 10px;
+      margin-top: 15px;
     }
     &:hover {
       transform: scale(1.06);
@@ -80,10 +80,14 @@ const Condition = styled.ul`
   @media screen and (max-width: 510px) {
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
-    row-gap: 20px;
+    row-gap: 25px;
+    margin-top: 30px;
     li {
       display: flex;
       justify-content: center;
+      h3 {
+        margin-top: 10px;
+      }
       &:hover {
         transform: none;
       }
