@@ -21,11 +21,12 @@ const TitleWrap = styled.div`
   width: 100%;
   h5 {
     font-size: 20px;
+    font-weight: 500;
     text-align: center;
     margin-top: 10px;
   }
   h2 {
-    margin-top: 30px;
+    margin-top: 60px;
     font-size: 30px;
     font-weight: 500;
   }
@@ -98,6 +99,9 @@ const SupWrap = styled.div`
   }
   @media screen and (max-width: 510px) {
     padding: 0 15px;
+    h2 {
+      font-size: 23px;
+    }
   }
 `;
 
