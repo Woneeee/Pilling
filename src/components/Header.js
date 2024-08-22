@@ -59,6 +59,7 @@ const User = styled.ul`
   }
   @media screen and (max-width: 510px) {
     li {
+      margin-left: 25px;
       font-size: 23px;
     }
   }

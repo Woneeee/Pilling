@@ -4,6 +4,9 @@ import { point } from "../../../GlobalStyled";
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
+  @media screen and (max-width: 510px) {
+    height: 40vh;
+  }
 `;
 
 export const Wrap = styled.form`
@@ -47,6 +50,17 @@ export const Wrap = styled.form`
     text-align: center;
     cursor: pointer;
     font-weight: 500;
+  }
+
+  @media screen and (max-width: 510px) {
+    margin: 110px auto;
+    max-width: 370px;
+    width: 100%;
+    height: 520px;
+    padding: 30px 20px;
+    h2 {
+      margin-bottom: 35px;
+    }
   }
 `;
 
