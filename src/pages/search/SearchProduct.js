@@ -119,7 +119,7 @@ export const SearchProduct = () => {
         <Form>
           <input
             {...register("product", {
-              required: "검색어를 입력해주세요",
+              required: "제품명을 검색해주세요!",
             })}
             type="text"
             placeholder="자주먹는 영양제를 검색해보세요."

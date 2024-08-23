@@ -18,6 +18,8 @@ const Container = styled.div`
   left: 0;
   z-index: 99;
   background-color: white;
+  @media screen and (max-width: 510px) {
+  }
 `;
 
 const Wrap = styled.div`
