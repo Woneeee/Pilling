@@ -9,7 +9,7 @@ import {
   WordWrap,
   Word,
 } from "./components/SearchStyle";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { point } from "../../GlobalStyled";
 import { routes } from "../../routes";
 import { GoSearch } from "react-icons/go";
@@ -21,14 +21,17 @@ export const SearchFunction = () => {
     formState: { errors },
   } = useForm();
 
-  const functionHandler = () => {};
+  const navi = useNavigate();
+  const functionHandler = ({ condition }) => {
+    navi(`/recommand/${condition}`);
+  };
 
   return (
     <>
       <SearchContainer onSubmit={handleSubmit(functionHandler)}>
         <Form>
           <input
-            {...register("product", {
+            {...register("condition", {
               required: "검색어를 입력해주세요",
             })}
             type="text"
@@ -38,7 +41,7 @@ export const SearchFunction = () => {
           <button>
             <GoSearch />
           </button>
-          <ErrorMessage>{errors?.product?.message}</ErrorMessage>
+          <ErrorMessage>{errors?.function?.message}</ErrorMessage>
         </Form>
       </SearchContainer>
 
@@ -70,19 +73,19 @@ export const SearchFunction = () => {
 
           <Word>
             <li>
-              <Link># 간</Link>
+              <Link to={"/recommand/피부"}># 피부</Link>
             </li>
 
             <li>
-              <Link># 노화</Link>
+              <Link to={"/recommand/항산화"}># 항산화</Link>
             </li>
 
             <li>
-              <Link># 체지방</Link>
+              <Link to={"/recommand/체지방"}># 체지방</Link>
             </li>
 
             <li>
-              <Link># 혈압</Link>
+              <Link to={"/recommand/혈압"}># 혈압</Link>
             </li>
           </Word>
         </WordWrap>

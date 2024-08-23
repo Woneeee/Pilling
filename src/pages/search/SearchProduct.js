@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { GoSearch } from "react-icons/go";
 import { point } from "../../GlobalStyled";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { routes } from "../../routes";
 import {
   SearchContainer,
@@ -13,15 +13,95 @@ import {
   WordWrap,
   Word,
 } from "./components/SearchStyle";
+import { supDetail } from "../../api";
+import { useState } from "react";
+import styled from "styled-components";
+
+const ResultContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const ResultWrap = styled.div`
+  max-width: 1260px;
+  width: 100%;
+  @media screen and (max-width: 510px) {
+    padding: 0 15px;
+  }
+`;
+
+const Title = styled.div`
+  font-size: 25px;
+  font-weight: 500;
+`;
+
+const ProContainer = styled.div`
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  @media screen and (max-width: 510px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+const Con = styled.div`
+  height: 140px;
+  border-top: 1px solid #55555550;
+  display: flex;
+`;
+
+const Img = styled.div``;
+
+const Text = styled.div`
+  h2 {
+    font-weight: 500;
+    margin-top: 20px;
+  }
+  p {
+    font-size: 15px;
+    opacity: 0.8;
+    margin-top: 10px;
+  }
+`;
 
 export const SearchProduct = () => {
+  const [supDetailData, setSupDetailData] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [prNmData, setPrNmData] = useState();
+  const [searchData, setSearchData] = useState();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const productHandler = () => {};
+  const navi = useNavigate();
+  const productHandler = async ({ product }) => {
+    setPrNmData(product);
+
+    const {
+      body: { items: detail1 },
+    } = await supDetail(1);
+    const {
+      body: { items: detail2 },
+    } = await supDetail(2);
+    const {
+      body: { items: detail3 },
+    } = await supDetail(3);
+    const supDetailResult = detail1.concat(detail2, detail3);
+    setSupDetailData(supDetailResult);
+    setIsLoading(false);
+
+    const supName = supDetailResult.filter((res) =>
+      res.item.PRDUCT.includes(product)
+    );
+    setSearchData(supName);
+  };
+
+  console.log(searchData);
 
   return (
     <>
@@ -66,27 +146,53 @@ export const SearchProduct = () => {
 
       <WordContainer>
         <WordWrap>
-          <h2>추천 검색어</h2>
+          <h2>검색어 예시 ex)</h2>
 
           <Word>
-            <li>
-              <Link># 비타민</Link>
-            </li>
+            <li>비타민</li>
 
-            <li>
-              <Link># 오메가3</Link>
-            </li>
+            <li>오메가3</li>
 
-            <li>
-              <Link># 프로바이오틱스</Link>
-            </li>
+            <li>프로바이오틱스</li>
 
-            <li>
-              <Link># 마그네슘</Link>
-            </li>
+            <li>마그네슘</li>
           </Word>
         </WordWrap>
       </WordContainer>
+
+      {searchData?.length === 0 ? (
+        <Title>검색결과가 없습니다.</Title>
+      ) : (
+        <>
+          {searchData && (
+            <ResultContainer>
+              <ResultWrap>
+                <Title>{prNmData}</Title>
+
+                <ProContainer>
+                  {searchData.map((res) => (
+                    <Link
+                      key={res.item.PRDUCT}
+                      to={`/supdetail/${res.item.PRDUCT}`}
+                    >
+                      <Con>
+                        <Img>
+                          <img src="" alt="" />
+                        </Img>
+
+                        <Text>
+                          <h2>{res.item.PRDUCT}</h2>
+                          <p>{res.item.ENTRPS}</p>
+                        </Text>
+                      </Con>
+                    </Link>
+                  ))}
+                </ProContainer>
+              </ResultWrap>
+            </ResultContainer>
+          )}
+        </>
+      )}
     </>
   );
 };
