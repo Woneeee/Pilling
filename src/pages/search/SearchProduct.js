@@ -35,12 +35,18 @@ const ResultWrap = styled.div`
 const Title = styled.div`
   font-size: 25px;
   font-weight: 500;
+  max-width: 1260px;
+  margin: 0 auto;
+  @media screen and (max-width: 510px) {
+    padding: 0 15px;
+  }
 `;
 
 const ProContainer = styled.div`
   margin-top: 30px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
   @media screen and (max-width: 510px) {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -161,7 +167,9 @@ export const SearchProduct = () => {
       </WordContainer>
 
       {searchData?.length === 0 ? (
-        <Title>검색결과가 없습니다.</Title>
+        <Title>
+          <h2>검색결과가 없습니다.</h2>
+        </Title>
       ) : (
         <>
           {searchData && (
