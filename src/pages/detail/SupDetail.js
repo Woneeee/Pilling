@@ -33,6 +33,7 @@ const MainCon = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 40px;
   @media screen and (max-width: 510px) {
     height: 500px;
   }
@@ -61,11 +62,12 @@ const STitle = styled.div`
     font-size: 25px;
     font-weight: 500;
     letter-spacing: -1px;
+    line-height: 35px;
   }
 `;
 
 const Mark = styled.div`
-  margin-top: 45px;
+  margin-top: 40px;
   font-size: 17px;
   opacity: 0.6;
   font-weight: 500;

@@ -97,7 +97,7 @@ export const Header = () => {
 
         <User>
           <li>
-            <Link to={routes.search}>
+            <Link to={routes.searchproduct}>
               <GoSearch />
             </Link>
           </li>

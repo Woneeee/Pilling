@@ -119,7 +119,7 @@ export const Conditions = () => {
         <h2>어떤 고민이 있으신가요?</h2>
 
         <GoSearch>
-          <Link to={routes.search}>
+          <Link to={routes.searchfunction}>
             <p>
               고민별 제품 찾으러가기 <FaArrowRight />
             </p>

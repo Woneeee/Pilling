@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 
-export const Search = () => {
+export const SearchProduct = () => {
   const {
     register,
     handleSubmit,
     formState: { errors, isValid },
   } = useForm();
 
-  return <div>Search</div>;
+  return <div>SearchProduct</div>;
 };

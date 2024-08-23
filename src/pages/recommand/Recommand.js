@@ -188,6 +188,8 @@ export const Recommand = () => {
   // console.log(nutData);
 
   // console.log(nutNameData);
+  // console.log(supNameData);
+
   // console.log(supProData);
 
   return (
