@@ -6,6 +6,7 @@ import styled from "styled-components";
 import mark from "../../img/mark.jpg";
 import { point } from "../../GlobalStyled";
 import { useScrollTop } from "../../lib/useScrollTop";
+import { useKakaoImg } from "../../lib/useKakaoImg";
 
 const MainContainer = styled.div`
   width: 100%;

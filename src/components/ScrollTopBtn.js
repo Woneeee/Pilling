@@ -17,6 +17,14 @@ const Btn = styled.div`
   bottom: 40px;
   color: ${point.color};
   cursor: pointer;
+  @media screen and (max-width: 510px) {
+    width: 50px;
+    height: 50px;
+    border-radius: 18px;
+    font-size: 30px;
+    right: 10px;
+    bottom: 10px;
+  }
 `;
 
 export const ScrollTopBtn = () => {
