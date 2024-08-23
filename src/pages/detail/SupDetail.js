@@ -5,6 +5,7 @@ import { Loading } from "../../components/Loading";
 import styled from "styled-components";
 import mark from "../../img/mark.jpg";
 import { point } from "../../GlobalStyled";
+import { useScrollTop } from "../../lib/useScrollTop";
 
 const MainContainer = styled.div`
   width: 100%;
@@ -136,6 +137,8 @@ const InfoText = styled.div`
 `;
 
 export const SupDetail = () => {
+  useScrollTop();
+
   const [supDetailData, setSupDetailData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();

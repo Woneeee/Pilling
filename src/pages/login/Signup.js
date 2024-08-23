@@ -3,8 +3,11 @@ import { Container, Wrap, Text, ErrorMessage } from "./components/LoginStyle";
 import { routes } from "../../routes";
 import { CgPill } from "react-icons/cg";
 import { Link, useNavigate } from "react-router-dom";
+import { useScrollTop } from "../../lib/useScrollTop";
 
 export const Signup = () => {
+  useScrollTop();
+
   const {
     register,
     handleSubmit,

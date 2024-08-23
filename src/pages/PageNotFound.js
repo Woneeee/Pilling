@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useKakaoImg } from "../lib/useKakaoImg";
+import { useScrollTop } from "../lib/useScrollTop";
 
 const Container = styled.div`
   padding: 280px 0;
@@ -18,7 +19,7 @@ const Text = styled.div`
 `;
 
 export const PageNotFound = () => {
-  useKakaoImg("지민");
+  useScrollTop();
 
   return (
     <Container>

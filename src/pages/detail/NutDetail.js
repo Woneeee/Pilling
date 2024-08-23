@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { supDetail } from "../../api";
 import { Loading } from "../../components/Loading";
 import styled from "styled-components";
+import { useScrollTop } from "../../lib/useScrollTop";
 
 const STitle = styled.div`
   margin-top: 60px;
@@ -112,6 +113,8 @@ const Text = styled.div`
 `;
 
 export const NutDetail = () => {
+  useScrollTop();
+
   const [supDetailData, setSupDetailData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();

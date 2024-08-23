@@ -4,8 +4,11 @@ import { routes } from "../../routes";
 import { CgPill } from "react-icons/cg";
 import { Container, Wrap, Text, ErrorMessage } from "./components/LoginStyle";
 import { useState } from "react";
+import { useScrollTop } from "../../lib/useScrollTop";
 
 export const Login = () => {
+  useScrollTop();
+
   const {
     register,
     handleSubmit,

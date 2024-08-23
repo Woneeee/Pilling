@@ -4,6 +4,7 @@ import { Loading } from "../../components/Loading";
 import { MainBanner } from "./components/MainBanner";
 import styled from "styled-components";
 import { Conditions } from "./components/Conditions";
+import { useScrollTop } from "../../lib/useScrollTop";
 
 const Container = styled.div`
   width: 100%;
@@ -11,6 +12,8 @@ const Container = styled.div`
 `;
 
 export const Home = () => {
+  useScrollTop();
+
   const [supDetailData, setSupDetailData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 

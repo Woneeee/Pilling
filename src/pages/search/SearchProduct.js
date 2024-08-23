@@ -16,6 +16,8 @@ import {
 import { supDetail } from "../../api";
 import { useState } from "react";
 import styled from "styled-components";
+import { Loading } from "../../components/Loading";
+import { useScrollTop } from "../../lib/useScrollTop";
 
 const ResultContainer = styled.div`
   width: 100%;
@@ -73,6 +75,8 @@ const Text = styled.div`
 `;
 
 export const SearchProduct = () => {
+  useScrollTop();
+
   const [supDetailData, setSupDetailData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const [prNmData, setPrNmData] = useState();
@@ -173,31 +177,37 @@ export const SearchProduct = () => {
       ) : (
         <>
           {searchData && (
-            <ResultContainer>
-              <ResultWrap>
-                <Title>{prNmData}</Title>
+            <>
+              {isLoading ? (
+                <Loading />
+              ) : (
+                <ResultContainer>
+                  <ResultWrap>
+                    <Title>{prNmData}</Title>
 
-                <ProContainer>
-                  {searchData.map((res) => (
-                    <Link
-                      key={res.item.PRDUCT}
-                      to={`/supdetail/${res.item.PRDUCT}`}
-                    >
-                      <Con>
-                        <Img>
-                          <img src="" alt="" />
-                        </Img>
+                    <ProContainer>
+                      {searchData.map((res) => (
+                        <Link
+                          key={res.item.PRDUCT}
+                          to={`/supdetail/${res.item.PRDUCT}`}
+                        >
+                          <Con>
+                            <Img>
+                              <img src="" alt="" />
+                            </Img>
 
-                        <Text>
-                          <h2>{res.item.PRDUCT}</h2>
-                          <p>{res.item.ENTRPS}</p>
-                        </Text>
-                      </Con>
-                    </Link>
-                  ))}
-                </ProContainer>
-              </ResultWrap>
-            </ResultContainer>
+                            <Text>
+                              <h2>{res.item.PRDUCT}</h2>
+                              <p>{res.item.ENTRPS}</p>
+                            </Text>
+                          </Con>
+                        </Link>
+                      ))}
+                    </ProContainer>
+                  </ResultWrap>
+                </ResultContainer>
+              )}
+            </>
           )}
         </>
       )}

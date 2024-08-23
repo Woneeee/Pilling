@@ -11,6 +11,7 @@ import { NutDetail } from "./pages/detail/NutDetail";
 import { SupDetail } from "./pages/detail/SupDetail";
 import { SearchFunction } from "././pages/search/SearchFunction";
 import { SearchProduct } from "././pages/search/SearchProduct";
+import { ScrollTopBtn } from "./components/ScrollTopBtn";
 
 const Router = () => {
   return (
@@ -27,6 +28,7 @@ const Router = () => {
         <Route path={routes.searchproduct} element={<SearchProduct />} />
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
+      <ScrollTopBtn />
       <Footer />
     </HashRouter>
   );

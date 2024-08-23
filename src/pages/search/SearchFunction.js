@@ -13,8 +13,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { point } from "../../GlobalStyled";
 import { routes } from "../../routes";
 import { GoSearch } from "react-icons/go";
+import { useScrollTop } from "../../lib/useScrollTop";
 
 export const SearchFunction = () => {
+  useScrollTop();
+
   const {
     register,
     handleSubmit,
