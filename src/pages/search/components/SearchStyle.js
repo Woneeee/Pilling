@@ -126,8 +126,6 @@ export const Word = styled.ul`
     border-radius: 16px;
     margin-right: 20px;
     border: 1px solid ${point.smooth};
-    a {
-      font-size: 15px;
-    }
+    font-size: 15px;
   }
 `;
