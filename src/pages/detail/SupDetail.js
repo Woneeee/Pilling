@@ -17,6 +17,9 @@ const MainContainer = styled.div`
   /* background-color: pink; */
   margin-top: 100px;
   border-bottom: 1px solid #55555540;
+  @media screen and (max-width: 510px) {
+    margin-top: 50px;
+  }
 `;
 
 const MainWrap = styled.div`
@@ -36,9 +39,6 @@ const MainCon = styled.div`
   flex-direction: column;
   align-items: center;
   margin-bottom: 50px;
-  @media screen and (max-width: 510px) {
-    height: 500px;
-  }
 `;
 
 const Img = styled.div`
@@ -70,6 +70,16 @@ const STitle = styled.div`
     letter-spacing: -1px;
     line-height: 35px;
   }
+  @media screen and (max-width: 510px) {
+    margin-top: 55px;
+    h5 {
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+    h2 {
+      font-size: 20px;
+    }
+  }
 `;
 
 const Mark = styled.div`
@@ -79,6 +89,16 @@ const Mark = styled.div`
   font-weight: 500;
   display: flex;
   align-items: center;
+  @media screen and (max-width: 510px) {
+    margin-top: 25px;
+    h5 {
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+    h2 {
+      font-size: 20px;
+    }
+  }
 `;
 
 const MarkImg = styled.div`
@@ -108,6 +128,10 @@ const InfoWrap = styled.div`
   }
   @media screen and (max-width: 510px) {
     padding: 0 15px;
+    h2 {
+      font-size: 22px;
+      margin-top: 30px;
+    }
   }
 `;
 

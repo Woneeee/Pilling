@@ -128,4 +128,9 @@ export const Word = styled.ul`
     border: 1px solid ${point.smooth};
     font-size: 15px;
   }
+  @media screen and (max-width: 510px) {
+    li {
+      margin-right: 10px;
+    }
+  }
 `;

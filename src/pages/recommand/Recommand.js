@@ -123,7 +123,7 @@ const Img = styled.div`
     border-radius: 14px;
   }
   @media screen and (max-width: 510px) {
-    height: 200px;
+    height: 180px;
   }
 `;
 
