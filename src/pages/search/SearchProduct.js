@@ -172,7 +172,7 @@ export const SearchProduct = () => {
 
       {searchData?.length === 0 ? (
         <Title>
-          <h2>검색결과가 없습니다.</h2>
+          <h2>검색결과가 없습니다 😢</h2>
         </Title>
       ) : (
         <>

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { getKakaoImg } from "../api";
-import { PiImageSquareFill } from "react-icons/pi";
 
 export const useKakaoImg = (searchWhat) => {
   const [imgData, setImgData] = useState();

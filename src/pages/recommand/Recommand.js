@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { nutDetail, supDetail } from "../../api";
+import { getKakaoImg, nutDetail, supDetail } from "../../api";
 import { Loading } from "../../components/Loading";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
@@ -9,6 +9,7 @@ import "swiper/css";
 import "./css/swiperStyle.css";
 import { useKakaoImg } from "../../lib/useKakaoImg";
 import { useScrollTop } from "../../lib/useScrollTop";
+import noImg from "../../img/no_image.jpg";
 
 const STitle = styled.div`
   margin-top: 60px;
@@ -61,6 +62,7 @@ const NutWrap = styled.div`
     border-radius: 15px;
     font-weight: 500;
     font-size: 17px;
+    line-height: 20px;
   }
   @media screen and (max-width: 510px) {
     padding: 0 15px;
@@ -95,12 +97,13 @@ const SupWrap = styled.div`
 const Product = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 25px;
-  row-gap: 30px;
+  column-gap: 40px;
+  row-gap: 50px;
   margin-top: 20px;
   @media screen and (max-width: 510px) {
     grid-template-columns: repeat(2, 1fr);
     row-gap: 30px;
+    column-gap: 20px;
   }
 `;
 
@@ -110,10 +113,15 @@ const Con = styled.div`
 
 const Img = styled.div`
   width: 100%;
-  height: 300px;
-  border: 1px solid #888888;
-  border-radius: 10px;
-
+  height: 280px;
+  border: 1px solid #88888820;
+  border-radius: 14px;
+  img {
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid #88888820;
+    border-radius: 14px;
+  }
   @media screen and (max-width: 510px) {
     height: 200px;
   }
@@ -150,6 +158,7 @@ export const Recommand = () => {
   const [nutNameData, setNutNameData] = useState();
   const [supNameData, setSupNameData] = useState();
   const [supProData, setProData] = useState();
+  const [imgData, setImgData] = useState();
 
   useEffect(() => {
     (async () => {
@@ -164,18 +173,18 @@ export const Recommand = () => {
       } = await supDetail(3);
       const supDetailResult = detail1.concat(detail2, detail3);
 
-      const {
-        I2710: { row: nutResult },
-      } = await nutDetail();
+      // const {
+      //   I2710: { row: nutResult },
+      // } = await nutDetail();
 
       setSupDetailData(supDetailResult);
-      setNutData(nutResult);
+      // setNutData(nutResult);
       setIsLoading(false);
 
-      const nut = nutResult.filter(
-        (res) => res.PRIMARY_FNCLTY.includes(id) === true
-      );
-      setNutNameData(nut);
+      // const nut = nutResult.filter(
+      //   (res) => res.PRIMARY_FNCLTY.includes(id) === true
+      // );
+      // setNutNameData(nut);
 
       const supName = supDetailResult.filter(
         (res) => res.item.MAIN_FNCTN.includes(id) === true
@@ -184,6 +193,28 @@ export const Recommand = () => {
 
       const supProduct = supName.map((res) => res.item.PRDUCT);
       setProData(supProduct);
+
+      // -----------------------------------------------------------
+      // 카카오이미지 가져오깅
+      const imgSearchHandler = async (searchWhat) => {
+        // paramter 설정
+        const params = {
+          query: searchWhat,
+          sort: "accuracy", // accuracy | recency 정확도 or 최신
+          page: 1, // 페이지번호
+          size: 1, // 한 페이지에 보여 질 문서의 개수
+        };
+
+        const {
+          data: { documents },
+        } = await getKakaoImg(params); // api 호출
+        setImgData(documents[0]?.image_url);
+      };
+
+      // imgSearchHandler(supProduct[0]);
+      for (let i = 0; i <= supProduct.length - 1; i++) {
+        await imgSearchHandler(supProduct[i]);
+      }
     })();
   }, []);
 
@@ -193,7 +224,7 @@ export const Recommand = () => {
   // console.log(nutNameData);
   // console.log(supNameData);
 
-  // console.log(supProData);
+  console.log(imgData);
 
   return (
     <>
@@ -209,7 +240,7 @@ export const Recommand = () => {
             </TitleWrap>
           </STitle>
 
-          <NutContainer>
+          {/* <NutContainer>
             <NutWrap>
               <Swiper
                 slidesPerView={4.3}
@@ -219,15 +250,15 @@ export const Recommand = () => {
                 }}
               >
                 {nutNameData.map((res) => (
-                  <SwiperSlide>
-                    <Link to={`/nutdetail/${res.PRDCT_NM}`} key={res.PRDCT_NM}>
+                  <SwiperSlide key={res.PRDCT_NM}>
+                    <Link to={`/nutdetail/${res.PRDCT_NM}`}>
                       {res.PRDCT_NM}
                     </Link>
                   </SwiperSlide>
                 ))}
               </Swiper>
             </NutWrap>
-          </NutContainer>
+          </NutContainer> */}
 
           <SupContainer>
             <SupWrap>
@@ -241,7 +272,15 @@ export const Recommand = () => {
                   >
                     <Con>
                       <Img>
-                        <img src="" alt="" />
+                        {imgData ? (
+                          <img
+                            src={imgData}
+                            alt=""
+                            referrerPolicy="no-referrer"
+                          />
+                        ) : (
+                          <img src={noImg} alt="no_img" />
+                        )}
                       </Img>
 
                       <Text>

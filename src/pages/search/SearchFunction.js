@@ -14,9 +14,25 @@ import { point } from "../../GlobalStyled";
 import { routes } from "../../routes";
 import { GoSearch } from "react-icons/go";
 import { useScrollTop } from "../../lib/useScrollTop";
+import { supDetail } from "../../api";
+import { useState } from "react";
+import styled from "styled-components";
+
+const NoResult = styled.div`
+  font-size: 25px;
+  font-weight: 500;
+  max-width: 1260px;
+  margin: 0 auto;
+  @media screen and (max-width: 510px) {
+    padding: 0 15px;
+  }
+`;
 
 export const SearchFunction = () => {
   useScrollTop();
+
+  const [supDetailData, setSupDetailData] = useState();
+  const [noResult, setNoResult] = useState();
 
   const {
     register,
@@ -25,8 +41,27 @@ export const SearchFunction = () => {
   } = useForm();
 
   const navi = useNavigate();
-  const functionHandler = ({ condition }) => {
-    navi(`/recommand/${condition}`);
+  const functionHandler = async ({ condition }) => {
+    const {
+      body: { items: detail1 },
+    } = await supDetail(1);
+    const {
+      body: { items: detail2 },
+    } = await supDetail(2);
+    const {
+      body: { items: detail3 },
+    } = await supDetail(3);
+    const supDetailResult = detail1.concat(detail2, detail3);
+    setSupDetailData(supDetailResult);
+
+    const data = supDetailResult.filter((res) =>
+      res.item.MAIN_FNCTN.includes(condition)
+    );
+    if (data.length !== 0) {
+      navi(`/recommand/${condition}`);
+    } else {
+      setNoResult("검색 결과가 없습니다 😢");
+    }
   };
 
   return (
@@ -93,6 +128,8 @@ export const SearchFunction = () => {
           </Word>
         </WordWrap>
       </WordContainer>
+
+      <NoResult>{noResult}</NoResult>
     </>
   );
 };

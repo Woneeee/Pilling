@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { supDetail } from "../../api";
+import { getKakaoImg, supDetail } from "../../api";
 import { useParams } from "react-router-dom";
 import { Loading } from "../../components/Loading";
 import styled from "styled-components";
@@ -7,6 +7,7 @@ import mark from "../../img/mark.jpg";
 import { point } from "../../GlobalStyled";
 import { useScrollTop } from "../../lib/useScrollTop";
 import { useKakaoImg } from "../../lib/useKakaoImg";
+import noImg from "../../img/no_image.jpg";
 
 const MainContainer = styled.div`
   width: 100%;
@@ -14,7 +15,7 @@ const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   /* background-color: pink; */
-  margin-top: 60px;
+  margin-top: 100px;
   border-bottom: 1px solid #55555540;
 `;
 
@@ -30,12 +31,11 @@ const MainWrap = styled.div`
 const MainCon = styled.div`
   max-width: 500px;
   width: 100%;
-  height: 600px;
   /* background-color: antiquewhite; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   @media screen and (max-width: 510px) {
     height: 500px;
   }
@@ -45,10 +45,14 @@ const Img = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 55%;
+  height: 360px;
   /* background-color: lightgray; */
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
   @media screen and (max-width: 510px) {
-    height: 50%;
+    height: 300px;
   }
 `;
 
@@ -56,7 +60,7 @@ const STitle = styled.div`
   margin-top: 70px;
   text-align: center;
   h5 {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     letter-spacing: -1px;
     opacity: 0.6;
   }
@@ -69,7 +73,7 @@ const STitle = styled.div`
 `;
 
 const Mark = styled.div`
-  margin-top: 40px;
+  margin-top: 30px;
   font-size: 17px;
   opacity: 0.6;
   font-weight: 500;
@@ -144,6 +148,7 @@ export const SupDetail = () => {
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
   const [supNameData, setSupNameData] = useState();
+  const [imgData, setImgData] = useState();
 
   useEffect(() => {
     (async () => {
@@ -165,10 +170,29 @@ export const SupDetail = () => {
         res.item.PRDUCT.includes(id)
       );
       setSupNameData(supName[0].item);
+
+      // ---------------------------------------------------
+
+      const imgSearchHandler = async () => {
+        // paramter 설정
+        const params = {
+          query: supName[0].item.PRDUCT,
+          sort: "accuracy", // accuracy | recency 정확도 or 최신
+          page: 1, // 페이지번호
+          size: 1, // 한 페이지에 보여 질 문서의 개수
+        };
+
+        const {
+          data: { documents },
+        } = await getKakaoImg(params); // api 호출
+        setImgData(documents[0]?.image_url);
+      };
+      imgSearchHandler();
     })();
   }, []);
 
   // console.log(supNameData);
+  console.log(imgData);
 
   return (
     <>
@@ -180,7 +204,11 @@ export const SupDetail = () => {
             <MainWrap>
               <MainCon>
                 <Img>
-                  <img src="" alt="" />
+                  {imgData ? (
+                    <img src={imgData} alt="" referrerPolicy="no-referrer" />
+                  ) : (
+                    <img src={noImg} alt="no_img" />
+                  )}
                 </Img>
                 <STitle>
                   <h5>{supNameData.ENTRPS}</h5>

@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { point } from "../../../GlobalStyled";
 
 export const SearchContainer = styled.div`
-  margin-top: 70px;
+  margin-top: 100px;
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 
   @media screen and (max-width: 510px) {
-    margin-top: 50px;
+    margin-top: 70px;
   }
 `;
 
