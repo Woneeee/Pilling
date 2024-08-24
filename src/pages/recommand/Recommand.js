@@ -195,7 +195,7 @@ export const Recommand = () => {
       setProData(supProduct);
 
       // -----------------------------------------------------------
-      // 카카오이미지 가져오깅
+      // 카카오이미지 가져오기
       const imgSearchHandler = async (searchWhat) => {
         // paramter 설정
         const params = {
@@ -209,12 +209,9 @@ export const Recommand = () => {
           data: { documents },
         } = await getKakaoImg(params); // api 호출
         setImgData(documents[0]?.image_url);
-
-        const a = new Array();
-        a.push(documents[0]?.image_url);
       };
 
-      // imgSearchHandler(supProduct[0]);
+      imgSearchHandler(supProduct[0]);
       for (let i = 0; i <= supProduct.length - 1; i++) {
         await imgSearchHandler(supProduct[i]);
       }
