@@ -209,6 +209,9 @@ export const Recommand = () => {
           data: { documents },
         } = await getKakaoImg(params); // api 호출
         setImgData(documents[0]?.image_url);
+
+        const a = new Array();
+        a.push(documents[0]?.image_url);
       };
 
       // imgSearchHandler(supProduct[0]);
@@ -224,7 +227,7 @@ export const Recommand = () => {
   // console.log(nutNameData);
   // console.log(supNameData);
 
-  console.log(imgData);
+  // console.log(imgData);
 
   return (
     <>
