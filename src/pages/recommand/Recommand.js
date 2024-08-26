@@ -211,7 +211,7 @@ export const Recommand = () => {
         setImgData(documents[0]?.image_url);
       };
 
-      imgSearchHandler(supProduct[0]);
+      // imgSearchHandler(supProduct[0]);
       for (let i = 0; i <= supProduct.length - 1; i++) {
         await imgSearchHandler(supProduct[i]);
       }

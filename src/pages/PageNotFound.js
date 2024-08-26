@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { useKakaoImg } from "../lib/useKakaoImg";
 import { useScrollTop } from "../lib/useScrollTop";
+import { useEffect, useState } from "react";
+import { getKakaoImg, supDetail } from "../api";
+import { useParams } from "react-router-dom";
 
 const Container = styled.div`
   padding: 280px 0;
