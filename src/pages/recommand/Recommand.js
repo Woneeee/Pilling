@@ -7,7 +7,6 @@ import { point } from "../../GlobalStyled";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "./css/swiperStyle.css";
-import { useKakaoImg } from "../../lib/useKakaoImg";
 import { useScrollTop } from "../../lib/useScrollTop";
 import noImg from "../../img/no_image.jpg";
 
@@ -224,7 +223,7 @@ export const Recommand = () => {
   // console.log(nutNameData);
   // console.log(supNameData);
 
-  // console.log(imgData);
+  console.log(imgData);
 
   return (
     <>
