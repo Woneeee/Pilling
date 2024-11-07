@@ -16,19 +16,22 @@
 </div>
 
 - React
-- html / css
+- HTML / CSS
 - JS
-- node.js
-- git / github
+- Node.js
+- Git / GitHub
 
 ## 개발기간 및 계획표
 
-## 프로젝트소개 및 Url
+## 프로젝트소개 및 URL
 
-- Github Url - https://github.com/Woneeee/Pilling
-- Project Url
+- GitHub URL - https://github.com/Woneeee/Pilling
+- Project URL
 
-- 공공데이터 Open Api Url
+- 공공데이터 Open Api URL
+
   - 식품의약처
     - https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15056760
     - https://www.data.go.kr/data/15059798/openapi.do
+
+- 모바일 이미지
