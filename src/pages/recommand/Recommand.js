@@ -3,7 +3,6 @@ import { getKakaoImg, nutDetail, supDetail } from "../../api";
 import { Loading } from "../../components/Loading";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
-import { point } from "../../GlobalStyled";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "./css/swiperStyle.css";
@@ -39,34 +38,6 @@ const TitleWrap = styled.div`
     }
     h2 {
       font-size: 28px;
-    }
-  }
-`;
-
-const NutContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-bottom: 1px solid #88888850;
-`;
-
-const NutWrap = styled.div`
-  max-width: 1260px;
-  width: 100%;
-  padding-bottom: 10px;
-  a {
-    padding: 6px 10px;
-    background-color: ${point.verySmooth};
-    border-radius: 15px;
-    font-weight: 500;
-    font-size: 17px;
-    line-height: 20px;
-  }
-  @media screen and (max-width: 510px) {
-    padding: 0 15px;
-    a {
-      font-size: 16px;
     }
   }
 `;
@@ -151,13 +122,11 @@ export const Recommand = () => {
   useScrollTop();
 
   const [supDetailData, setSupDetailData] = useState();
-  const [nutData, setNutData] = useState();
   const [isLoading, setIsLoading] = useState(true);
   const { id } = useParams();
-  const [nutNameData, setNutNameData] = useState();
   const [supNameData, setSupNameData] = useState();
   const [supProData, setProData] = useState();
-  const [imgData, setImgData] = useState();
+  const [imgData, setImgData] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -172,18 +141,8 @@ export const Recommand = () => {
       } = await supDetail(3);
       const supDetailResult = detail1.concat(detail2, detail3);
 
-      // const {
-      //   I2710: { row: nutResult },
-      // } = await nutDetail();
-
       setSupDetailData(supDetailResult);
-      // setNutData(nutResult);
       setIsLoading(false);
-
-      // const nut = nutResult.filter(
-      //   (res) => res.PRIMARY_FNCLTY.includes(id) === true
-      // );
-      // setNutNameData(nut);
 
       const supName = supDetailResult.filter(
         (res) => res.item.MAIN_FNCTN.includes(id) === true
@@ -207,13 +166,10 @@ export const Recommand = () => {
         const {
           data: { documents },
         } = await getKakaoImg(params); // api 호출
-        setImgData(documents[0]?.image_url);
+        setImgData([...imgData, documents[0]?.image_url]);
       };
 
-      // imgSearchHandler(supProduct[0]);
-      for (let i = 0; i <= supProduct.length - 1; i++) {
-        await imgSearchHandler(supProduct[i]);
-      }
+      imgSearchHandler(supProduct[0]);
     })();
   }, []);
 
@@ -223,6 +179,7 @@ export const Recommand = () => {
   // console.log(nutNameData);
   // console.log(supNameData);
 
+  // console.log(supProData);
   console.log(imgData);
 
   return (
@@ -238,26 +195,6 @@ export const Recommand = () => {
               <h2>{id}에 좋은</h2>
             </TitleWrap>
           </STitle>
-
-          {/* <NutContainer>
-            <NutWrap>
-              <Swiper
-                slidesPerView={4.3}
-                breakpoints={{
-                  860: { slidesPerView: 4.3 },
-                  300: { slidesPerView: 1.2 },
-                }}
-              >
-                {nutNameData.map((res) => (
-                  <SwiperSlide key={res.PRDCT_NM}>
-                    <Link to={`/nutdetail/${res.PRDCT_NM}`}>
-                      {res.PRDCT_NM}
-                    </Link>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </NutWrap>
-          </NutContainer> */}
 
           <SupContainer>
             <SupWrap>
