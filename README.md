@@ -26,7 +26,7 @@
 ## 프로젝트소개 및 URL
 
 - GitHub URL - https://github.com/Woneeee/Pilling
-- Project URL
+- Project URL - https://woneeee.github.io/Pilling/
 
 - 공공데이터 Open Api URL
 
