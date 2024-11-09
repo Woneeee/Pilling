@@ -44,6 +44,7 @@ const Text = styled.div`
       font-size: 27px;
       font-weight: 600;
       line-height: 40px;
+      word-break: keep-all;
     }
     h2:nth-child(2) {
       font-size: 32px;
